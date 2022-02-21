@@ -65,19 +65,7 @@ d3.csv("data.csv").then(function(stateData) {
       .attr("fill", "pink")
       .attr("opacity", ".5");
   
-      // Step 6: Initialize tool tip
-      var toolTip = d3.tip()
-        .attr("class", "tooltip")
-        .offset([0, 0])
-        .html(function(d) {
-          return (`${d.abbr}`);
-        });
-  
-      // Step 7: Create tooltip in the chart
-      // ==============================
-      chartGroup.call(toolTip);
-  
-      // Step 8: Create axes labels
+      // Step 6: Create axes labels
       chartGroup.append("text")
         .attr("transform", "rotate(-90)")
         .attr("y", 0 - margin.left + 40)

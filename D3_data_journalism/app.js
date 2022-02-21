@@ -73,8 +73,8 @@ d3.csv("data.csv").then(function(stateData) {
         .text(function (d) {
             return d.abbr;
         })
-        .attr("x", d => xLinearScale(d.age))
-        .attr("y", d => yLinearScale(d.poverty))
+        .attr("x", d => xLinearScale(d.age) - 10)
+        .attr("y", d => yLinearScale(d.poverty) + 7)
         .attr("size", 20)
         .attr("color", "black");
   

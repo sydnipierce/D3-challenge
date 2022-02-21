@@ -81,16 +81,16 @@ d3.csv("data.csv").then(function(stateData) {
       // Step 7: Create axes labels
       chartGroup.append("text")
         .attr("transform", "rotate(-90)")
-        .attr("y", 0 - margin.left + 40)
-        .attr("x", 0 - (height / 2))
+        .attr("y", 0 - margin.left)
+        .attr("x", 0 - 240)
         .attr("dy", "1em")
         .attr("class", "axisText")
-        .text("Number of Billboard 100 Hits");
+        .text("Poverty Rate");
   
       chartGroup.append("text")
-        .attr("transform", `translate(${width / 2}, ${height + margin.top + 30})`)
+        .attr("transform", `translate(${width / 2 - 50}, ${height + margin.top - 10})`)
         .attr("class", "axisText")
-        .text("Hair Metal Band Hair Length (inches)");
+        .text("Median Age");
     }).catch(function(error) {
       console.log(error);
     });

@@ -1,5 +1,5 @@
 // Set SVG container dimensions
-var svgWidth = screen.availwidth;
+var svgWidth = 1000;
 var svgHeight = 500;
 
 // Prep for chart dimensions
@@ -56,17 +56,16 @@ d3.csv("data.csv").then(function(stateData) {
   
       // Step 5: Create Circles
       var circlesGroup = chartGroup.selectAll("circle")
-      .data(hairData)
+      .data(stateData)
       .enter()
       .append("circle")
-      .attr("cx", d => xLinearScale(d.hair_length))
-      .attr("cy", d => yLinearScale(d.num_hits))
+      .attr("cx", d => xLinearScale(d.age))
+      .attr("cy", d => yLinearScale(d.poverty))
       .attr("r", "15")
       .attr("fill", "pink")
       .attr("opacity", ".5");
   
       // Step 6: Initialize tool tip
-      // ==============================
       var toolTip = d3.tip()
         .attr("class", "tooltip")
         .offset([80, -60])

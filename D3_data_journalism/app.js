@@ -35,7 +35,7 @@ d3.csv("data.csv").then(function(stateData) {
   
       // Step 2: Create scale functions
       var xLinearScale = d3.scaleLinear()
-        .domain([0, d3.max(stateData, d => d.age)])
+        .domain([25, d3.max(stateData, d => d.age)])
         .range([0, width]);
   
       var yLinearScale = d3.scaleLinear()
@@ -64,8 +64,21 @@ d3.csv("data.csv").then(function(stateData) {
       .attr("r", "15")
       .attr("fill", "pink")
       .attr("opacity", ".5");
+
+        // Step 6: Create text labels
+        var textGroup = chartGroup.selectAll("text")
+        .data(stateData)
+        .enter()
+        .append("text")
+        .text(function (d) {
+            return d.abbr;
+        })
+        .attr("x", d => xLinearScale(d.age))
+        .attr("y", d => yLinearScale(d.poverty))
+        .attr("size", 20)
+        .attr("color", "black");
   
-      // Step 6: Create axes labels
+      // Step 7: Create axes labels
       chartGroup.append("text")
         .attr("transform", "rotate(-90)")
         .attr("y", 0 - margin.left + 40)
@@ -81,4 +94,3 @@ d3.csv("data.csv").then(function(stateData) {
     }).catch(function(error) {
       console.log(error);
     });
-  

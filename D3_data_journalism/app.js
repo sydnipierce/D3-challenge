@@ -28,16 +28,14 @@ var chartGroup = svg.append("g")
 d3.csv("data.csv").then(function(stateData) {
 
     // Step 1: Parse Data/Cast as numbers
-    // ==============================
     stateData.forEach(function(data) {
         data.poverty = +data.poverty;
         data.age = +data.age;
       });
   
       // Step 2: Create scale functions
-      // ==============================
       var xLinearScale = d3.scaleLinear()
-        .domain([0, d3.max(stateData, d => d.poverty)])
+        .domain([0, d3.max(stateData, d => d.age)])
         .range([0, width]);
   
       var yLinearScale = d3.scaleLinear()
@@ -45,12 +43,10 @@ d3.csv("data.csv").then(function(stateData) {
         .range([height, 0]);
   
       // Step 3: Create axis functions
-      // ==============================
       var bottomAxis = d3.axisBottom(xLinearScale);
       var leftAxis = d3.axisLeft(yLinearScale);
   
       // Step 4: Append Axes to the chart
-      // ==============================
       chartGroup.append("g")
         .attr("transform", `translate(0, ${height})`)
         .call(bottomAxis);
@@ -59,7 +55,6 @@ d3.csv("data.csv").then(function(stateData) {
         .call(leftAxis);
   
       // Step 5: Create Circles
-      // ==============================
       var circlesGroup = chartGroup.selectAll("circle")
       .data(hairData)
       .enter()
